@@ -116,30 +116,6 @@ const Todolist=()=>{
     };
 
     return (
-        // <div className="todo">
-        //     <h2>TODO LIST</h2>
-        //     <input
-        //     type="text"
-        //     placeholder="Add a new task"
-        //     value={todo}   //input value matching the state value
-        //     onChange={(e)=>setTodo(e.target.value)}    //update the state variable in each change
-        //     ></input>
-            
-        //     {!show?<button onClick={handleAdd}>Add</button>:
-        //     <button onClick={handleUpdate}>Update</button>} 
-        //     <br></br>
-        //     <ul className="todos">
-        //     {newtodo.map((val, i) => (
-        //             <li key={i}>
-        //                 <input type="checkbox"/>{val.todo}
-        //                 <button className="edit" onClick={() => handleEdit(i)}>Edit</button> 
-        //                 <button className="delete" onClick={() => handleDelete(i)}>Delete</button>
-        //             </li>
-        //         ))}
-        //     </ul>
-
-        // </div>
-
 
          <div className="todo">
         <h2>TO-DO LIST</h2>
@@ -147,29 +123,31 @@ const Todolist=()=>{
         <input
             type="text"
             placeholder="Add a new task"
-            value={todo}
-            onChange={(e) => setTodo(e.target.value)}
+            value={todo}    //input value matching the state value
+            onChange={(e) => setTodo(e.target.value)}    //update the state variable in each change
         />
         
         {!show ?
             <button onClick={handleAdd}>Add</button> :
             <button onClick={handleUpdate}>Update</button>}
-            <br>
-            </br>
+
             <br></br>
-       <table className="table todos-table" style={{ backgroundColor: 'yellow' }}>
-            <thead>
+            <br></br>
+
+       <table className="totodo">
+        <br></br>
+
                 <tr>
                     <th>Status</th>
                     <th>Task</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
-            </thead>
+            
             <tbody>
                 {newtodo.map((val, i) => (
                     <tr key={i}>
-                        <td className="checkbox-label">
+                        <td className="checkbox">
                             <input type="checkbox"
                             checked={val.completed}
                             onChange={() => handleCheckboxChange(val.id)} />
@@ -181,6 +159,9 @@ const Todolist=()=>{
                     </tr>
                 ))}
             </tbody>
+
+            <br></br>
+
         </table>
     </div>
     );

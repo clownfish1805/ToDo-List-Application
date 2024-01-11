@@ -1,47 +1,22 @@
 *{
     text-align: center;
-    background-color: rgb(255, 255, 255);
-    
+    background-color: rgb(255, 251, 251);
+    border: 10px;
     justify-content: center;
     align-items: center; 
     
 }
-/*
-input{
-    height: 35px;
-    width: 20%;
-}
-button{
-    height: 40px;
-    width: 10%;
-    background-color: rgb(12, 157, 197);
-    color: rgb(0, 0, 0);
-    margin-left:10px;
-}
-
-.todo h2{
-    color: rgb(0, 0, 0);
-}
-.todo input{
-    background-color: white;
-    color: black;
-}
-.todos{
-   
-    color: rgb(0, 0, 0);
-}
-.custom-table{
-    max-width: 80%;
-}  */
 
 .todo {
     text-align: center;
+
 }
 
 
 .todo input{
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 20px;
+    border: solid black;
 }
 
 .todos-table th,
@@ -50,10 +25,10 @@ button{
     
 }
 
-.todos-table tbody{
-    background-color: yellow; 
-    margin-top: 200px;
-  }
+/* .todos-table tbody{
+    /* width : 1000px; */
+  /* border-spacing: 100px;  
+} */
 
 .todo h2{
     font-weight: bold;
@@ -61,4 +36,15 @@ button{
 }
 .todo button{
     margin-left:10px;
+    padding: 10px;
+    border: solid black;
+}
+.totodo{
+  width: 50%;
+  border: 5px solid rgb(39, 40, 39);
+  padding: 100px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 10px 10px 5px rgb(60, 61, 61);
+  font-size: large;
 }
