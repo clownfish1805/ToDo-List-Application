@@ -1,6 +1,8 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import './todo.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Todolist=()=>{
     const [todo,setTodo] = useState("");
@@ -10,7 +12,7 @@ const Todolist=()=>{
 
 
     useEffect(() => {
-        // Load tasks from local storage on component mount
+        // Load tasks from local storage on component 
         const localTasks = JSON.parse(localStorage.getItem("localTasks"));
         // if (localTasks ) {
         //     setNewtodo(localTasks);
@@ -102,30 +104,85 @@ const Todolist=()=>{
        updateLocalStorage(updatedTodos);
     }
 
+    const handleCheckboxChange = (id) => {
+        const updatedTodos = newtodo.map((todo) => {
+            if (todo.id === id) {
+                return { ...todo, completed: !todo.completed };
+            }
+            return todo;
+        });
+        setNewtodo(updatedTodos);
+        updateLocalStorage(updatedTodos);
+    };
 
     return (
-        <div className="todo">
-            <h2>TODO LIST</h2>
-            <input
+        // <div className="todo">
+        //     <h2>TODO LIST</h2>
+        //     <input
+        //     type="text"
+        //     placeholder="Add a new task"
+        //     value={todo}   //input value matching the state value
+        //     onChange={(e)=>setTodo(e.target.value)}    //update the state variable in each change
+        //     ></input>
+            
+        //     {!show?<button onClick={handleAdd}>Add</button>:
+        //     <button onClick={handleUpdate}>Update</button>} 
+        //     <br></br>
+        //     <ul className="todos">
+        //     {newtodo.map((val, i) => (
+        //             <li key={i}>
+        //                 <input type="checkbox"/>{val.todo}
+        //                 <button className="edit" onClick={() => handleEdit(i)}>Edit</button> 
+        //                 <button className="delete" onClick={() => handleDelete(i)}>Delete</button>
+        //             </li>
+        //         ))}
+        //     </ul>
+
+        // </div>
+
+
+         <div className="todo">
+        <h2>TO-DO LIST</h2>
+        <br></br>
+        <input
             type="text"
             placeholder="Add a new task"
-            value={todo}   //input value matching the state value
-            onChange={(e)=>setTodo(e.target.value)}    //update the state variable in each change
-            ></input>
-            
-            {!show?<button onClick={handleAdd}>Add</button>:
-            <button onClick={handleUpdate}>Update</button>} 
-            <ul className="todos">
-            {newtodo.map((val, i) => (
-                    <li key={i}>
-                        <input type="checkbox"/>{val.todo}
-                        <button className="edit" onClick={() => handleEdit(i)}>Edit</button> 
-                        <button className="delete" onClick={() => handleDelete(i)}>Delete</button>
-                    </li>
+            value={todo}
+            onChange={(e) => setTodo(e.target.value)}
+        />
+        
+        {!show ?
+            <button onClick={handleAdd}>Add</button> :
+            <button onClick={handleUpdate}>Update</button>}
+            <br>
+            </br>
+            <br></br>
+       <table className="table todos-table" style={{ backgroundColor: 'yellow' }}>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Task</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {newtodo.map((val, i) => (
+                    <tr key={i}>
+                        <td className="checkbox-label">
+                            <input type="checkbox"
+                            checked={val.completed}
+                            onChange={() => handleCheckboxChange(val.id)} />
+                        </td>
+                        <td style={{ textDecoration: val.completed ? "line-through" : "none" }}>{val.todo}</td>
+                        {/* <td>{val.todo}</td> */}
+                        <td><button className="btn btn-success" onClick={() => handleEdit(i)}>Edit</button></td>
+                        <td><button className="btn btn-danger" onClick={() => handleDelete(i)}>Delete</button></td>
+                    </tr>
                 ))}
-            </ul>
-
-        </div>
+            </tbody>
+        </table>
+    </div>
     );
 };
 export default Todolist;

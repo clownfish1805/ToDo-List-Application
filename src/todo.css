@@ -1,7 +1,12 @@
 *{
     text-align: center;
-    background-color: rgb(73, 70, 70);
+    background-color: rgb(255, 255, 255);
+    
+    justify-content: center;
+    align-items: center; 
+    
 }
+/*
 input{
     height: 35px;
     width: 20%;
@@ -10,24 +15,12 @@ button{
     height: 40px;
     width: 10%;
     background-color: rgb(12, 157, 197);
-    color: rgb(10, 9, 9);
+    color: rgb(0, 0, 0);
     margin-left:10px;
 }
-.edit{
-    height: 40px;
-    width: 10%;
-    background-color: rgb(15, 125, 32);
-    color: white;
-    margin-right:10px;
-}
-.delete{
-    height: 40px;
-    width: 10%;
-    background-color: rgb(126, 37, 4);
-    color: white;
-}
+
 .todo h2{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 .todo input{
     background-color: white;
@@ -35,5 +28,37 @@ button{
 }
 .todos{
    
-    color: white;
+    color: rgb(0, 0, 0);
+}
+.custom-table{
+    max-width: 80%;
+}  */
+
+.todo {
+    text-align: center;
+}
+
+
+.todo input{
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.todos-table th,
+.todos-table td {
+    vertical-align: middle;
+    
+}
+
+.todos-table tbody{
+    background-color: yellow; 
+    margin-top: 200px;
+  }
+
+.todo h2{
+    font-weight: bold;
+    margin-top: 100px;
+}
+.todo button{
+    margin-left:10px;
 }
