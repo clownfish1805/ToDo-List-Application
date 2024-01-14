@@ -14,11 +14,8 @@ const Todolist=()=>{
     useEffect(() => {
         // Load tasks from local storage on component 
         const localTasks = JSON.parse(localStorage.getItem("localTasks"));
-        // if (localTasks ) {
-        //     setNewtodo(localTasks);
-        // }
-
-        if (localTasks && Array.isArray(localTasks)) {
+      
+        if (localTasks && Array.isArray(localTasks)) { // no new empty array should be inserted
             setNewtodo(localTasks);
         }
     }, []);
@@ -30,49 +27,22 @@ const Todolist=()=>{
 
     const handleAdd=()=>{
         // console.log(todo);
-        // if(todo.length!==0){
-        //     const newData={id:new Date().getTime(),todo:todo};
-        //     setNewtodo((prevTodos) => [...prevTodos, newData]);
-        // //localStorage.setItem("localTasks",JSON.stringify([...newtodo, newData]))
-        // setTodo("");           //to make the input set to none again
-        // }
 
         if (todo.length !== 0) {
             const newData = { id: new Date().getTime(), todo: todo };
             const updatedTodos = [...newtodo, newData];
             setNewtodo(updatedTodos);
-            setTodo("");
-            updateLocalStorage(updatedTodos);
+            setTodo("");                 //to make the input set to none again
+            updateLocalStorage(updatedTodos);      //update the local storage 
         }
-
-        
     }
-    // console.log(newtodo);
+    
 
     const handleEdit =(index) =>{
         setTodo(newtodo[index].todo);
         setshow(true);     //to show the update button
         setEdit(index);
     }
-
-   // const handleUpdate=()=>{
-    //     newtodo.splice(editindex,1,todo);
-    //     setNewtodo([...newtodo]);   //to update the state
-    //     setshow(false);  //to show the add button
-    //     setTodo("");
-    //     updateLocalStorage(...newtodo); 
-    
-    // const handleUpdate = () => {
-    //     if (todo.length !== 0 && editindex !== null) {
-    //         const updatedTodos = [...newtodo];
-    //         updatedTodos[editindex].todo = todo;
-    //         setNewtodo(updatedTodos);
-    //         setshow(false);
-    //         setTodo("");
-    //         setEdit(null);
-    //         updateLocalStorage(updatedTodos);
-    //     }
-    // }
 
     const handleUpdate = () => {
         if (todo.length !== 0 && editindex !== null) {
@@ -83,7 +53,7 @@ const Todolist=()=>{
                 return item;
             });
             setNewtodo(updatedTodos);
-            setshow(false);
+            setshow(false);      //to show the add button
             setTodo("");
             setEdit(null);
             updateLocalStorage(updatedTodos);
@@ -92,15 +62,8 @@ const Todolist=()=>{
     
 
     const handleDelete = (index) =>{
-       
-    //     newtodo.splice(index,1);     //to remove only 1 index in 1 click
-    //     setNewtodo([...newtodo]);    //to update the state
-    //    //localStorage.setItem("localTasks",JSON.stringify([...newtodo]));
-    //    updateLocalStorage(...newtodo);
-
-
        const updatedTodos = newtodo.filter((_, i) => i !== index);
-       setNewtodo(updatedTodos);
+       setNewtodo(updatedTodos);    //to update the state
        updateLocalStorage(updatedTodos);
     }
 
