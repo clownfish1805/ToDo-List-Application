@@ -1,19 +1,19 @@
-TODO LIST 
+TODO LIST <br>
 This is a simple Todo List web application built with React.
 
-Installation
-Ensure you have Node.js installed on your machine.
-Clone the repository
-Run the development server -- npm start
+Installation<br>
+Ensure you have Node.js installed on your machine.<br>
+Clone the repository.<br>
+Run the development server -- npm start.<br>
 
-Features
-Add a new task to the to-do list.
-Edit existing tasks.
-Delete tasks.
-Mark tasks as completed.
-Data persistence using local storage.
+Features<br>
+Add a new task to the to-do list.<br>
+Edit existing tasks.<br>
+Delete tasks.<br>
+Mark tasks as completed.<br>
+Data persistence using local storage.<br>
 
-Dependencies
-React
-useState and useEffect Hooks
+Dependencies<br>
+React<br>
+useState and useEffect Hooks<br>
 Bootstrap (for styling)
