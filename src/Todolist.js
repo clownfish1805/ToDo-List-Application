@@ -9,14 +9,15 @@ const Todolist=()=>{
     const [newtodo,setNewtodo]=useState([]);   //new state to store the new todo 
     const [show,setshow]=useState(false);
     const [editindex,setEdit]=useState();      //one more state to store the edited values
+    const [priority, setPriority] = useState(""); // State to store priority
 
 
     useEffect(() => {
         // Load tasks from local storage on component 
         const localTasks = JSON.parse(localStorage.getItem("localTasks"));
       
-        if (localTasks && Array.isArray(localTasks)) { // no new empty array should be inserted
-            setNewtodo(localTasks);
+        if (localTasks && Array.isArray(localTasks)) {       // no new empty array should be inserted
+            setNewtodo(localTasks);               //updates the newtodo with localtask value
         }
     }, []);
 
@@ -33,6 +34,7 @@ const Todolist=()=>{
             const updatedTodos = [...newtodo, newData];
             setNewtodo(updatedTodos);
             setTodo("");                 //to make the input set to none again
+            setPriority(""); // Reset priority after adding
             updateLocalStorage(updatedTodos);      //update the local storage 
         }
     }
@@ -48,7 +50,7 @@ const Todolist=()=>{
         if (todo.length !== 0 && editindex !== null) {
             const updatedTodos = newtodo.map((item, index) => {
                 if (index === editindex) {
-                    return { ...item, todo: todo };
+                    return { ...item, todo: todo , priority: priority};
                 }
                 return item;
             });
@@ -56,6 +58,7 @@ const Todolist=()=>{
             setshow(false);      //to show the add button
             setTodo("");
             setEdit(null);
+            setPriority(""); // Reset priority after updating
             updateLocalStorage(updatedTodos);
         }
     }
@@ -78,6 +81,15 @@ const Todolist=()=>{
         updateLocalStorage(updatedTodos);
     };
 
+
+    const handlePriorityChange = (e) => {
+        const priorityValue = e.target.value;
+    setPriority(priorityValue);
+
+    };
+
+
+
     return (
 
          <div className="todo">
@@ -94,6 +106,28 @@ const Todolist=()=>{
             <button onClick={handleAdd}>Add</button> :
             <button onClick={handleUpdate}>Update</button>}
 
+<div>
+                <label>
+                    Priority:  &nbsp;
+                    <input
+                        type="radio"
+                        value="asap"
+                        checked={priority === "asap"}
+                        onChange={handlePriorityChange}
+                    />
+                    ASAP &nbsp;
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        value="later"
+                        checked={priority === "later"}
+                        onChange={handlePriorityChange}
+                    />
+                     Later
+                </label>
+            </div>
+
             <br></br>
             <br></br>
 
@@ -103,6 +137,7 @@ const Todolist=()=>{
                 <tr>
                     <th>Status</th>
                     <th>Task</th>
+                    <th>Priority</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -117,6 +152,7 @@ const Todolist=()=>{
                         </td>
                         <td style={{ textDecoration: val.completed ? "line-through" : "none" }}>{val.todo}</td>
                         {/* <td>{val.todo}</td> */}
+                        <td>{val.priority || "None"}</td> {/* Display priority, if set, otherwise "None" */}
                         <td><button className="btn btn-success" onClick={() => handleEdit(i)}>Edit</button></td>
                         <td><button className="btn btn-danger" onClick={() => handleDelete(i)}>Delete</button></td>
                     </tr>
@@ -130,3 +166,4 @@ const Todolist=()=>{
     );
 };
 export default Todolist;
+
