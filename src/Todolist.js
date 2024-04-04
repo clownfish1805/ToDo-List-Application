@@ -26,18 +26,17 @@ const Todolist=()=>{
     };
 
 
-    const handleAdd=()=>{
-        // console.log(todo);
-
+    const handleAdd = () => {
         if (todo.length !== 0) {
-            const newData = { id: new Date().getTime(), todo: todo };
+            const newData = { id: new Date().getTime(), todo: todo, priority: priority }; // Include priority in the newData object
             const updatedTodos = [...newtodo, newData];
             setNewtodo(updatedTodos);
-            setTodo("");                 //to make the input set to none again
+            setTodo(""); // Reset todo input after adding
             setPriority(""); // Reset priority after adding
-            updateLocalStorage(updatedTodos);      //update the local storage 
+            updateLocalStorage(updatedTodos); // Update local storage
         }
     }
+    
     
 
     const handleEdit =(index) =>{
@@ -166,4 +165,3 @@ const Todolist=()=>{
     );
 };
 export default Todolist;
-
