@@ -11,7 +11,9 @@ Add a new task to the to-do list.<br>
 Edit existing tasks.<br>
 Delete tasks.<br>
 Mark tasks as completed.<br>
+Priority check.<br>
 Data persistence using local storage.<br>
+
 
 Dependencies<br>
 React<br>
