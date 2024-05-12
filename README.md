@@ -1,4 +1,4 @@
-TODO LIST <br>
+<b>TO-DO LIST</b> <br>
 This is a simple Todo List web application built with React.
 
 Installation<br>
